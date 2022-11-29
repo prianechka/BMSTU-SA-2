@@ -1,0 +1,18 @@
+% !TeX TXS-program:compile = txs:///lualatex/[--shell-escape]
+\include{preambul}
+
+% ---------------------- Документ ----------------------
+\begin{document}
+	\include{00-title}
+
+	\include{01-abstract}
+	
+	\renewcommand{\contentsname}{\normalsize\bfseries\centering СОДЕРЖАНИЕ}
+	\tableofcontents
+	
+	\include{02-naming}
+	\include{03-intro}
+	\include{10-analysis}
+	\include{50-conclusion}
+	\include{60-bibliography}
+\end{document}
