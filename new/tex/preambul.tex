@@ -5,12 +5,14 @@
 
 % Для работы с несколькими языками и шрифтом Times New Roman по-умолчанию
 \usepackage{cmap} % Улучшенный поиск русских слов в полученном pdf-файле
+\usepackage{graphicx}
 \usepackage[english,russian]{babel}
 \usepackage[utf8]{inputenc} % Кодировка utf8
 \usepackage{fontspec}
 \setmainfont{Times New Roman}
 \usepackage{float}
 \usepackage{pdfpages}
+\usepackage{amsmath}
 
 % ГОСТовские настройки для полей и абзацев
 \usepackage{geometry}
@@ -21,18 +23,10 @@
 \usepackage{misccorr}
 \usepackage{indentfirst}
 \usepackage{enumitem}
-\setlength{\parindent}{1.5cm}
-\renewcommand{\baselinestretch}{1.5}
+\setlength{\parindent}{1.25cm}
+\renewcommand{\baselinestretch}{1.25}
 \setlist{nolistsep} % Отсутствие отступов между элементами \enumerate и \itemize
 
-% Дополнительное окружения для подписей
-\usepackage{array}
-\newenvironment{signstabular}[1][1]{
-	\renewcommand*{\arraystretch}{#1}
-	\tabular
-}{
-	\endtabular
-}
 
 % Переопределение стандартных \section, \subsection, \subsubsection по ГОСТу;
 % Переопределение их отступов до и после для 1.5 интервала во всем документе
@@ -51,9 +45,7 @@
 \usepackage{setspace}
 \onehalfspacing % Полуторный интервал
 \frenchspacing
-\usepackage{caption}
 \usepackage{indentfirst} % Красная строка
-\usepackage{titlesec}
 \titleformat{\chapter}{\LARGE\bfseries}{\thechapter}{20pt}{\LARGE\bfseries}
 \titleformat{\section}{\centering\Large\bfseries}{\thesection\quad}{20pt}{\Large\bfseries}
 \usepackage{listings}
@@ -61,7 +53,6 @@
 % Выравнивание "где" по ГОСТу для формул
 \usepackage{eqexpl}
 
-\usepackage{graphicx}
 
 % Цвета для гиперссылок и листингов
 \usepackage{color}
@@ -69,6 +60,7 @@
 % Для нормальной нумерации картинок, разделённой по section'ам
 \usepackage{chngcntr}
 \counterwithin{figure}{section}
+\counterwithin{equation}{section}
 
 % Гиперссылки \toc с кликабельностью
 \usepackage{hyperref}
@@ -86,44 +78,6 @@
 \usepackage{color}
 \hypersetup{citecolor=black}
 
-\usepackage{listings}
-\lstset{
-	basicstyle=\footnotesize\ttfamily,
-	language=[Sharp]C, % Или другой ваш язык -- см. документацию пакета
-	commentstyle=\color{comment},
-	numbers=left,
-	numberstyle=\tiny\color{plain},
-	numbersep=5pt,
-	tabsize=4,
-	extendedchars=\true,
-	breaklines=true,
-	keywordstyle=\color{blue},
-	frame=b,
-	stringstyle=\ttfamily\color{string}\ttfamily,
-	showspaces=false,
-	showtabs=false,
-	xleftmargin=17pt,
-	framexleftmargin=17pt,
-	framexrightmargin=5pt,
-	framexbottommargin=4pt,
-	showstringspaces=false,
-	inputencoding=utf8x,
-	keepspaces=true
-}
-
-\DeclareCaptionLabelSeparator{line}{\ --\ }
-\DeclareCaptionFont{white}{\color{white}}
-\DeclareCaptionFormat{listing}{\colorbox[cmyk]{0.43,0.35,0.35,0.01}{\parbox{\textwidth}{\hspace{15pt}#1#2#3}}}
-\captionsetup[lstlisting]{
-	format=listing,
-	labelfont=white,
-	textfont=white,
-	singlelinecheck=false,
-	margin=0pt,
-	font={bf,footnotesize},
-	labelsep=line
-}
-
 \usepackage{ulem} % Нормальное нижнее подчеркивание
 \usepackage{hhline} % Двойная горизонтальная линия в таблицах
 \usepackage[figure,table]{totalcount} % Подсчет изображений, таблиц
@@ -139,17 +93,12 @@
 \newenvironment{code}{\captionsetup{type=listing}}{}
 \SetupFloatingEnvironment{listing}{name=Листинг}
 
-\usepackage{amsmath}
-\usepackage{slashbox}
-
-
-\usepackage[figurename=Рисунок]{caption}
-\usepackage{placeins}
 
 \newcommand{\anonsection}[1]{%
 	\section*{\centering#1}%
 	\addcontentsline{toc}{section}{#1}%
 }
+
 
 \makeatletter
 \renewenvironment{thebibliography}[1]
@@ -174,4 +123,9 @@
 \makeatother
 
 \renewcommand\labelitemi{---}
-\usepackage[labelsep=endash]{caption}
+\usepackage[figurename=Рисунок, labelsep=endash, singlelinecheck=false]{caption}
+\usepackage{placeins}
+\usepackage{ragged2e}
+\justifying
+\captionsetup[table]{justification=raggedleft,singlelinecheck=off}
+
